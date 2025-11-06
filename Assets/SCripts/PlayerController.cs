@@ -6,7 +6,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    public float jumpForce = 150f;
+    public float jumpForce = 250f;
     InputSystem_Actions inputActions;
 
     private void Awake()
