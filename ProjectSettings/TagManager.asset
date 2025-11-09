@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cactus
   - Platform
+  - PointBarrier
   layers:
   - Default
   - TransparentFX

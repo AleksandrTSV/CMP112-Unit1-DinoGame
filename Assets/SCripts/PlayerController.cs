@@ -2,12 +2,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     public float jumpForce = 250f;
     InputSystem_Actions inputActions;
+    //score variable to count the score
+    private int score = 0;
+    //public variable to display score on the UI
+    public TextMeshProUGUI scoreText;
+
 
     private void Awake()
     {
@@ -18,6 +24,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //setting score to 0 at the start of the game
+        score = 0;
+        //updating the score text on the UI
+        setScoreText();
     }
 
     private void Update()
@@ -36,5 +46,27 @@ public class PlayerController : MonoBehaviour
             
         }
 
+    }
+    // function to set the score text on the UI
+    void setScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
+    //on trigger enter method to check for collisions with Cactus and PointBarrier
+    void OnTriggerEnter(Collider other)
+    {
+        //checking if the player collides with the Cactus and deactivating the player game object
+        if (other.gameObject.CompareTag("Cactus"))
+        {
+            gameObject.SetActive(false);
+        }
+        //checking if the player collides with the PointBarrier and increasing the score by 1
+        if (other.gameObject.CompareTag("PointBarrier"))
+        {
+            Debug.Log("You Win!");
+            score = score + 1;
+            //updating the score text on the UI
+            setScoreText();
+        }
     }
 }
