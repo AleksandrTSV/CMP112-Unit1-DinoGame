@@ -37,4 +37,16 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Cactus"))
+        {
+            gameObject.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("PointBarrier"))
+        {
+            Debug.Log("You Win!");
+        }
+    }
 }
