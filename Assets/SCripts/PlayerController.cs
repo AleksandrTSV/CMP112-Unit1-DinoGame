@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    public float jumpForce = 250f;
+    public float jumpForce = 450f;
     InputSystem_Actions inputActions;
     //score variable to count the score
     private int score = 0;
