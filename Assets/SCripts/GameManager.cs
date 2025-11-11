@@ -9,4 +9,9 @@ public class GameManager : MonoBehaviour
         //restarts the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    //function to send user to main menu
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
