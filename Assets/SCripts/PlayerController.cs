@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     //public variable to display score on the UI
     public TextMeshProUGUI scoreText;
+    //reference to GameOver script
+    public GameOver GameOver;
 
 
     private void Awake()
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Cactus"))
         {
             gameObject.SetActive(false);
+            //calling the setup method from GameOver script and passing the score
+            GameOver.setup(score);
         }
         //checking if the player collides with the PointBarrier and increasing the score by 1
         if (other.gameObject.CompareTag("PointBarrier"))
