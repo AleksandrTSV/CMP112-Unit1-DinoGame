@@ -1,8 +1,9 @@
 using UnityEngine;
+using System.Collections;
 
 public class CactusController : MonoBehaviour
 {
-    public float speed = -3;
+    public float speed = -3; 
     private float movementZ;
     private Rigidbody rb;
 
@@ -17,12 +18,12 @@ public class CactusController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(0.0f, 0.0f, movementZ);
-        rb.AddForce(0,0,speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.AddForce(0, 0, speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-        if (transform.position.z < -25f) 
+        if (transform.position.z < -25f)
         {
             Destroy(gameObject);
-            
+
         }
     }
 }
