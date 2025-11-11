@@ -17,7 +17,7 @@ public class CactusController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(0.0f, 0.0f, movementZ);
-        rb.AddForce(0,0,speed * Time.deltaTime, ForceMode.VelocityChange);
+        rb.AddForce(0,0,speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
         if (transform.position.z < -25f) 
         {
