@@ -70,15 +70,7 @@ public class PlayerController : MonoBehaviour
 
             gameObject.SetActive(false);
             //calling the setup method from GameOver script and passing the score
-            GameOver.setup(score);
-        }
-        //checking if the player collides with the PointBarrier and increasing the score by 1
-        if (other.gameObject.CompareTag("PointBarrier"))
-        {
-            Debug.Log("You Win!");
-            score = score + 1;
-            //updating the score text on the UI
-            setScoreText();
+            //GameOver.setup(score);
         }
     }
 }

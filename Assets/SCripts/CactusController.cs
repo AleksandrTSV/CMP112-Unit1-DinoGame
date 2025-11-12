@@ -1,8 +1,11 @@
 using UnityEngine;
+using System.Collections;
+using TMPro;
 
 public class CactusController : MonoBehaviour
 {
-    public float speed = -3;
+    public float speed = -1.5f;
+    private float timer;
     private float movementZ;
     private Rigidbody rb;
 
@@ -16,13 +19,19 @@ public class CactusController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(0.0f, 0.0f, movementZ);
-        rb.AddForce(0,0,speed * Time.deltaTime, ForceMode.VelocityChange);
+        timer += Time.deltaTime;
 
-        if (transform.position.z < -25f) 
+        Vector3 movement = new Vector3(0.0f, 0.0f, movementZ);
+        rb.AddForce(0, 0, speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+        if (transform.position.z < -25f)
         {
             Destroy(gameObject);
-            
+        }
+
+        if (timer > 3f)
+        {
+            speed += -0.05f;
         }
     }
 }
