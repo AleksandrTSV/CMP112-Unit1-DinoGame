@@ -15,11 +15,16 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     //reference to GameOver script
     public GameOver GameOver;
+    //variables for audio 
+    private AudioSource source;
+    public AudioClip jumpSound;
 
-
+    
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
+        //starting the audio source
+        source = GetComponent<AudioSource>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), 0.6f))
         {
+            //play jump sound effect
+            source.PlayOneShot(jumpSound, 1.0f);
             rb.AddForce(0, jumpForce * Time.fixedDeltaTime, 0, ForceMode.VelocityChange);
             
         }
@@ -60,6 +67,7 @@ public class PlayerController : MonoBehaviour
         //checking if the player collides with the Cactus and deactivating the player game object
         if (other.gameObject.CompareTag("Cactus"))
         {
+
             gameObject.SetActive(false);
             //calling the setup method from GameOver script and passing the score
             GameOver.setup(score);
