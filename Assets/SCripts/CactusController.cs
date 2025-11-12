@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CactusController : MonoBehaviour
 {
-    public float speed = -3; 
+    public float speed = -1.5f;
+    private float timer;
     private float movementZ;
     private Rigidbody rb;
 
@@ -17,6 +18,8 @@ public class CactusController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        timer += Time.deltaTime;
+
         Vector3 movement = new Vector3(0.0f, 0.0f, movementZ);
         rb.AddForce(0, 0, speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
@@ -24,6 +27,11 @@ public class CactusController : MonoBehaviour
         {
             Destroy(gameObject);
 
+        }
+
+        if (timer > 3f) 
+        {
+            speed += -0.05f;
         }
     }
 }
