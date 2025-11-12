@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     //variables for audio 
     private AudioSource source;
     public AudioClip jumpSound;
+    public static bool alive = true;
 
     
     private void Awake()
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         inputActions = new InputSystem_Actions();
         //starting the audio source
         source = GetComponent<AudioSource>();
+        Time.timeScale = 1;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,8 +69,9 @@ public class PlayerController : MonoBehaviour
         //checking if the player collides with the Cactus and deactivating the player game object
         if (other.gameObject.CompareTag("Cactus"))
         {
-
+            Time.timeScale = 0;
             gameObject.SetActive(false);
+            
             //calling the setup method from GameOver script and passing the score
             //GameOver.setup(score);
         }
